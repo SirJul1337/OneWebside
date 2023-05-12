@@ -6,7 +6,6 @@ public class WebserviceRequest : IRequest
 {
     public async Task<string> GetResponseAsync(string url)
     {
-        string response = "";
         try
         {
             using (HttpClient client = new HttpClient())
@@ -15,9 +14,8 @@ public class WebserviceRequest : IRequest
                 HttpResponseMessage responseMessage = await client.GetAsync(url);
                 responseMessage.EnsureSuccessStatusCode();
 
-                response = await responseMessage.Content.ReadAsStringAsync();
+                return await responseMessage.Content.ReadAsStringAsync();
             };
-            return response;
         }
         catch (HttpRequestException e)
         {
