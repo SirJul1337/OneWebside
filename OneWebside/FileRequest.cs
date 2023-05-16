@@ -12,19 +12,19 @@ public class FileRequest : IRequest
 		}
         catch (FileNotFoundException f)
         {
-			Program.Logger.Error($"File doesnt exist {f.Source} | {f.Message}");
+			Log.Logger.Error($"File doesnt exist {f.Source} | {f.Message}");
 			return "File doesnt exists";
         }
         catch (Exception e)
 		{	
 			if (filepath == string.Empty)
 			{
-				Program.Logger.Error($"Filepath was empty{filepath}");
+				Log.Logger.Error($"Filepath was empty{filepath}");
 				return "Filepath is empty";
 			}
 			else
 			{
-				Program.Logger.Error($"{e.Source} | {e.Message}");
+				Log.Logger.Error($"{e.Source} | {e.Message}");
 				return "Error occured";
 			}
 		}
